@@ -1,25 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 0. WELCOME MODAL / PENGUMUMAN ---
-    const welcomeModal = document.getElementById("welcome-modal");
-    const welcomeCloseBtn = document.getElementById("welcome-close");
-
-    // Hanya tampil 1 kali per sesi (jika direfresh tidak akan muncul lagi sampai browser ditutup)
-    if (!sessionStorage.getItem("welcomeShown")) {
-        // Tampilkan setelah jeda sejenak agar animasi halaman bisa berjalan
-        setTimeout(() => {
-            welcomeModal.classList.add("show");
-            document.body.style.overflow = "hidden";
-        }, 500);
-    }
-    
-    welcomeCloseBtn.addEventListener("click", () => {
-        welcomeModal.classList.remove("show");
-        document.body.style.overflow = "auto";
-        sessionStorage.setItem("welcomeShown", "true");
-    });
-
-    // --- 1. DARK MODE TOGGLE (DIPERBAIKI) ---
+    // --- 1. DARK MODE TOGGLE ---
     const themeToggleBtn = document.getElementById("theme-toggle");
     const htmlElement = document.documentElement;
     const iconTheme = themeToggleBtn.querySelector("i");
@@ -59,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 2. HAMBURGER MENU & DROPDOWN (MOBILE) ---
+    // --- 2. HAMBURGER MENU & DROPDOWN (MOBILE / IPAD BROWSER) ---
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.querySelector(".nav-links");
     const dropdowns = document.querySelectorAll(".dropdown");
@@ -79,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dropdowns.forEach(dropdown => {
         dropdown.addEventListener("click", function(e) {
-            if(window.innerWidth <= 992) {
+            if(window.innerWidth <= 1250) {
                 if(e.target.classList.contains("fa-chevron-down") || e.target.parentElement.classList.contains("dropdown")){
                     e.preventDefault();
                     this.classList.toggle("open");
@@ -92,10 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.getElementById("navbar");
     window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
-            navbar.style.padding = "0.5rem 3%";
+            navbar.style.padding = "0.5rem 2%";
             navbar.style.boxShadow = "var(--shadow-md)";
         } else {
-            navbar.style.padding = "1rem 3%";
+            navbar.style.padding = "0 2%";
             navbar.style.boxShadow = "var(--shadow-sm)";
         }
     });
@@ -189,7 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const closeModal = () => {
         luaranModal.classList.remove('show');
-        if (!welcomeModal.classList.contains("show")) {
+        // Hanya lepaskan overflow bila bukan di mobile blocker screen
+        if (window.innerWidth > 850) {
             document.body.style.overflow = 'auto'; 
         }
         document.getElementById('m-capaian-bar').style.width = '0%'; // Reset bar
@@ -203,14 +185,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // =========================================
-    //  INTERACTIVE OWL MASCOT SYSTEM (DIPERBAIKI)
+    //  INTERACTIVE OWL MASCOT SYSTEM
     // =========================================
     const OWL_IMAGES = [
-        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787852921/Desain_tanpa_judul-removebg-preview_rg07lx.png',
-        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880579/Gemini_Generated_Image_2id6wx2id6wx2id6-removebg-preview_olwtbr.png',
-        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880580/Gemini_Generated_Image_cc0pxrcc0pxrcc0p-removebg-preview_ttafa4.png',
-        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880581/Gemini_Generated_Image_iihwgkiihwgkiihw-removebg-preview_idqap9.png',
-        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880580/Gemini_Generated_Image_kginynkginynkgin-removebg-preview_iunykg.png'
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/q_auto,f_auto/v1787852921/Desain_tanpa_judul-removebg-preview_rg07lx.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/q_auto,f_auto/v1787880579/Gemini_Generated_Image_2id6wx2id6wx2id6-removebg-preview_olwtbr.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/q_auto,f_auto/v1787880580/Gemini_Generated_Image_cc0pxrcc0pxrcc0p-removebg-preview_ttafa4.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/q_auto,f_auto/v1787880581/Gemini_Generated_Image_iihwgkiihwgkiihw-removebg-preview_idqap9.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/q_auto,f_auto/v1787880580/Gemini_Generated_Image_kginynkginynkgin-removebg-preview_iunykg.png'
     ];
     
     const OWL_EFFECTS = [ ' ✨ ', ' ❓ ', ' ❗ ', ' ☁️ ', ' 💨 ', '' ];
