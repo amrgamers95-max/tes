@@ -81,15 +81,14 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .nav-container {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 3%; max-width: 1400px; margin: 0 auto; height: 80px; 
+    padding: 1rem 3%; max-width: 1400px; margin: 0 auto; height: 80px; gap: 1rem; 
 }
-.nav-left-group { display: flex; align-items: center; gap: 1rem; }
-.nav-left { flex-shrink: 0; }
+.nav-left-group { display: flex; align-items: center; gap: 1rem; flex: 1; }
 .logo-wrapper { display: flex; align-items: center; gap: 0.3rem; } 
 .logo-wrapper img { width: 65px; height: 65px; object-fit: contain; filter: brightness(1.2); }
 .logo-wrapper .logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: 1px; color: #fff;}
-.nav-center { display: flex; justify-content: flex-start; }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-center { display: flex; justify-content: center; flex: 2.2; white-space: nowrap; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
 .nav-links li { position: relative; }
 .nav-links a { font-size: 0.95rem; font-weight: 600; padding: 0.5rem 0; transition: var(--transition); display: flex; align-items: center; gap: 5px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 .menu-profil-besar > a { font-size: 1.15rem; font-weight: 700; margin-right: 0.5rem;} 
@@ -100,14 +99,16 @@ img { max-width: 100%; height: auto; display: block; }
 .dropdown-menu li a { padding: 0.8rem 1rem; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-main); text-shadow: none; font-weight: 500;}
 .dropdown-menu li:last-child a { border-bottom: none; }
 .dropdown-menu li a:hover { background-color: var(--primary); color: white; }
-.nav-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; margin-left: auto;} 
-.icon-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #fff; transition: var(--transition); }
-.icon-btn:hover { color: #facc15; }
+.nav-right { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; justify-content: flex-end; flex: 1;} 
 .btn { padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; transition: var(--transition); text-align: center; display: inline-block; cursor: pointer; font-size: 0.9rem; }
 .btn-primary { background-color: #facc15; color: #111827; border: 2px solid #facc15; }
 .btn-primary:hover { background-color: #eab308; border-color: #eab308; }
 .btn-block { display: block; width: 100%; }
+.icon-box-btn { display: flex; align-items: center; justify-content: center; padding: 0; width: 42px; height: 42px; font-size: 1.2rem; }
 .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
+
+/* ================= WELCOME MODAL ================= */
+.welcome-box { max-width: 500px; text-align: center; padding: 2.5rem 2rem; border-top: 5px solid var(--primary); }
 
 /* ================= HERO SECTION ================= */
 .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 20px 40px; background: linear-gradient(rgba(63, 98, 18, 0.7), rgba(63, 98, 18, 0.7)), url('https://res.cloudinary.com/drxc5e7gf/image/upload/v1787820713/20200519_090929-EDIT_tutawd.jpg') center/cover no-repeat; z-index: 1; }
@@ -171,7 +172,7 @@ img { max-width: 100%; height: auto; display: block; }
 .org-card .nip { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 500;}
 .org-card .role { color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;}
 
-/* ================= LUARAN PROGRAM & MODAL DETAILED ================= */
+/* ================= LUARAN PROGRAM ================= */
 .luaran-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
 .stat-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-sm); }
 .stat-card .stat-number { font-size: 2.5rem; color: var(--primary-dark); line-height: 1; margin-bottom: 0.5rem; }
@@ -182,7 +183,6 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-filter:hover { border-color: var(--primary); color: var(--primary-dark); }
 .btn-filter.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(132, 204, 22, 0.3); }
 
-/* Card Preview Luaran */
 .luaran-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 .luaran-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; cursor: pointer; display: flex; flex-direction: column; }
 .luaran-card h4 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
@@ -195,8 +195,7 @@ img { max-width: 100%; height: auto; display: block; }
 .l-btn-detail { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; transition: var(--transition);}
 .luaran-card:hover .l-btn-detail { color: var(--primary); transform: translateX(5px); }
 
-
-/* ================= MODAL LENGKAP DETAILED ================= */
+/* ================= MODAL OVERLAY ================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
@@ -286,7 +285,7 @@ footer { background-color: var(--footer-bg); color: var(--footer-text); padding:
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 @keyframes pulseLogo { 0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)); } 50% { transform: scale(1.03); filter: drop-shadow(0 0 45px rgba(255, 255, 255, 0.9)); } 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)); } }
 #owl-system { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; overflow: hidden; }
-#owl-wrapper { position: absolute; top: 0; left: 0; will-change: transform, opacity; display: flex; justify-content: center; align-items: center; }
+#owl-wrapper { position: absolute; top: 0; left: 0; will-change: transform, opacity; display: flex; justify-content: center; align-items: center; pointer-events: auto; outline: none; }
 #owl-img { width: 120px; height: 120px; display: block; object-fit: contain; filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.25)); transition: transform 0.3s ease; }
 .owl-sway #owl-img { animation: gentleSway 2s ease-in-out infinite alternate; }
 @keyframes gentleSway { 0% { transform: scale(1) translateY(0px) rotate(0deg); } 100% { transform: scale(1.03) translateY(-5px) rotate(2deg); } }
@@ -297,7 +296,7 @@ footer { background-color: var(--footer-bg); color: var(--footer-text); padding:
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1200px) {
     .literasi-grid-5 { grid-template-columns: repeat(3, 1fr); }
-    .nav-links { gap: 1.5rem; }
+    .nav-links { gap: 1.2rem; }
 }
 @media (max-width: 992px) {
     .nav-center, .nav-right { display: none; } 
