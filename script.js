@@ -1,25 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. DARK MODE TOGGLE ---
+    // --- 0. WELCOME MODAL / PENGUMUMAN ---
+    const welcomeModal = document.getElementById("welcome-modal");
+    const welcomeCloseBtn = document.getElementById("welcome-close");
+
+    // Hanya tampil 1 kali per sesi (jika direfresh tidak akan muncul lagi sampai browser ditutup)
+    if (!sessionStorage.getItem("welcomeShown")) {
+        // Tampilkan setelah jeda sejenak agar animasi halaman bisa berjalan
+        setTimeout(() => {
+            welcomeModal.classList.add("show");
+            document.body.style.overflow = "hidden";
+        }, 500);
+    }
+    
+    welcomeCloseBtn.addEventListener("click", () => {
+        welcomeModal.classList.remove("show");
+        document.body.style.overflow = "auto";
+        sessionStorage.setItem("welcomeShown", "true");
+    });
+
+    // --- 1. DARK MODE TOGGLE (DIPERBAIKI) ---
     const themeToggleBtn = document.getElementById("theme-toggle");
     const htmlElement = document.documentElement;
     const iconTheme = themeToggleBtn.querySelector("i");
 
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-        htmlElement.setAttribute("data-theme", "dark");
-        iconTheme.classList.replace("fa-moon", "fa-sun");
+    // Menggunakan blok try-catch untuk mencegah web macet bila setingan privasi memblokir localStorage
+    try {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+            htmlElement.setAttribute("data-theme", "dark");
+            iconTheme.classList.replace("fa-moon", "fa-sun");
+        }
+    } catch (e) {
+        console.warn("localStorage tidak dapat diakses", e);
     }
 
     themeToggleBtn.addEventListener("click", () => {
-        if (htmlElement.getAttribute("data-theme") === "dark") {
-            htmlElement.removeAttribute("data-theme");
-            localStorage.setItem("theme", "light");
-            iconTheme.classList.replace("fa-sun", "fa-moon");
-        } else {
-            htmlElement.setAttribute("data-theme", "dark");
-            localStorage.setItem("theme", "dark");
-            iconTheme.classList.replace("fa-moon", "fa-sun");
+        const currentTheme = htmlElement.getAttribute("data-theme");
+        try {
+            if (currentTheme === "dark") {
+                htmlElement.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+                iconTheme.classList.replace("fa-sun", "fa-moon");
+            } else {
+                htmlElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+                iconTheme.classList.replace("fa-moon", "fa-sun");
+            }
+        } catch (e) {
+            // Tetap jalankan penggantian tema walau localStorage di block
+            if (currentTheme === "dark") {
+                htmlElement.removeAttribute("data-theme");
+                iconTheme.classList.replace("fa-sun", "fa-moon");
+            } else {
+                htmlElement.setAttribute("data-theme", "dark");
+                iconTheme.classList.replace("fa-moon", "fa-sun");
+            }
         }
     });
 
@@ -147,13 +183,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Show
             luaranModal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden';
         });
     });
 
     const closeModal = () => {
         luaranModal.classList.remove('show');
-        document.body.style.overflow = 'auto'; // Restore background scroll
+        if (!welcomeModal.classList.contains("show")) {
+            document.body.style.overflow = 'auto'; 
+        }
         document.getElementById('m-capaian-bar').style.width = '0%'; // Reset bar
     };
 
@@ -165,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // =========================================
-    //  INTERACTIVE OWL MASCOT SYSTEM
+    //  INTERACTIVE OWL MASCOT SYSTEM (DIPERBAIKI)
     // =========================================
     const OWL_IMAGES = [
         'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787852921/Desain_tanpa_judul-removebg-preview_rg07lx.png',
@@ -177,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const OWL_EFFECTS = [ ' ✨ ', ' ❓ ', ' ❗ ', ' ☁️ ', ' 💨 ', '' ];
     let currentOwlIndex = 0;
-    let owlSideLog = -1;
     
     const sysContainer = document.getElementById('owl-system');
     const wrap = document.getElementById('owl-wrapper');
@@ -201,9 +238,8 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.width = owlSize + 'px';
         img.style.height = owlSize + 'px';
         
-        let side;
-        do { side = randInt(0, 3); } while (side === owlSideLog);
-        owlSideLog = side;
+        // Pilih sisi acak (0: Atas, 1: Kanan, 2: Bawah, 3: Kiri)
+        let side = randInt(0, 3);
         
         let startX, startY, endX, endY, rot;
         let scaleX = 1;
@@ -211,33 +247,56 @@ document.addEventListener("DOMContentLoaded", () => {
         const edgeMargin = 15;
         
         if (side === 0) {
-            startX = rand(marginPadding, vw - owlSize - marginPadding); startY = -owlSize - 50; endX = startX; endY = edgeMargin; rot = 180 + rand(-15, 15);
+            startX = rand(marginPadding, vw - owlSize - marginPadding); startY = -owlSize - 50; endX = startX; endY = edgeMargin; rot = 180;
         } else if (side === 1) {
-            startX = vw + 50; startY = rand(marginPadding, vh - owlSize - marginPadding); endX = vw - owlSize - edgeMargin; endY = startY; rot = -90 + rand(-15, 15); if (Math.random() > 0.5) scaleX = -1; 
+            startX = vw + 50; startY = rand(marginPadding, vh - owlSize - marginPadding); endX = vw - owlSize - edgeMargin; endY = startY; rot = -90; scaleX = -1; 
         } else if (side === 2) {
-            startX = rand(marginPadding, vw - owlSize - marginPadding); startY = vh + 50; endX = startX; endY = vh - owlSize - edgeMargin; rot = rand(-15, 15);
+            startX = rand(marginPadding, vw - owlSize - marginPadding); startY = vh + 50; endX = startX; endY = vh - owlSize - edgeMargin; rot = 0;
         } else if (side === 3) {
-            startX = -owlSize - 50; startY = rand(marginPadding, vh - owlSize - marginPadding); endX = edgeMargin; endY = startY; rot = 90 + rand(-15, 15); if (Math.random() > 0.5) scaleX = -1; 
+            startX = -owlSize - 50; startY = rand(marginPadding, vh - owlSize - marginPadding); endX = edgeMargin; endY = startY; rot = 90; scaleX = -1; 
         }
         
-        const animDuration = randInt(300, 600);
-        const holdDuration = randInt(1000, 3000);
-        const delayBeforeNext = randInt(2000, 5000);
+        // Set Timer Statis / Tetap (semua akan memiliki durasi persis sama)
+        const animDuration = 600; // waktu animasi bergerak (0.6 detik)
+        const holdDuration = 3500; // lama dia nangkring (3.5 detik)
+        const delayBeforeNext = 3500; // jeda sebelum burung selanjutnya muncul (3.5 detik)
         
-        wrap.style.transition = 'none'; wrap.style.transform = `translate(${startX}px, ${startY}px)`; wrap.style.opacity = '0'; wrap.classList.remove('owl-sway');
-        img.style.transform = `scaleX(${scaleX}) rotate(${rot}deg)`; fx.className = ''; fx.innerHTML = '';
+        // 1. Posisi Persiapan (Masuk)
+        wrap.style.transition = 'none'; 
+        wrap.style.transform = `translate(${startX}px, ${startY}px)`; 
+        wrap.style.opacity = '0'; 
+        wrap.classList.remove('owl-sway');
+        img.style.transform = `scaleX(${scaleX}) rotate(${rot}deg)`; 
+        fx.className = ''; fx.innerHTML = '';
         
+        // Paksa browser reflow
         void wrap.offsetWidth;
-        wrap.style.transition = `all ${animDuration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`; wrap.style.transform = `translate(${endX}px, ${endY}px)`; wrap.style.opacity = '1';
         
+        // 2. Animasi Masuk
+        wrap.style.transition = `all ${animDuration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`; 
+        wrap.style.transform = `translate(${endX}px, ${endY}px)`; 
+        wrap.style.opacity = '1';
+        
+        // Tambahan Efek Pop
         const chosenFx = OWL_EFFECTS[randInt(0, OWL_EFFECTS.length - 1)];
         if (chosenFx !== '') { setTimeout(() => { fx.innerHTML = chosenFx; fx.style.top = (side === 2) ? '10%' : '80%'; fx.className = 'owl-fx-pop'; }, animDuration / 2); }
+        
+        // Aktifkan animasi ngambang setelah sampai
         setTimeout(() => { wrap.classList.add('owl-sway'); }, animDuration);
+        
+        // 3. Animasi Keluar (Kembali ke titik awal)
         setTimeout(() => {
-            wrap.classList.remove('owl-sway'); wrap.style.transition = `all ${animDuration}ms ease-in`; wrap.style.transform = `translate(${startX}px, ${startY}px)`;
-            img.style.transform = `scaleX(${scaleX}) scaleY(0.5) rotate(${rot}deg)`; wrap.style.opacity = '0';
+            wrap.classList.remove('owl-sway'); 
+            wrap.style.transition = `all ${animDuration}ms ease-in`; 
+            // Kembali persis ke tempat dia berasal
+            wrap.style.transform = `translate(${startX}px, ${startY}px)`;
+            wrap.style.opacity = '0';
+            
+            // 4. Jadwalkan Burung Selanjutnya
             setTimeout(runOwlCycle, animDuration + delayBeforeNext);
         }, animDuration + holdDuration);
     }
+    
+    // Mulai siklus
     setTimeout(runOwlCycle, 2000);
 });
