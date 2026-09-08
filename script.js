@@ -1,0 +1,243 @@
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- 1. DARK MODE TOGGLE ---
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const htmlElement = document.documentElement;
+    const iconTheme = themeToggleBtn.querySelector("i");
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        htmlElement.setAttribute("data-theme", "dark");
+        iconTheme.classList.replace("fa-moon", "fa-sun");
+    }
+
+    themeToggleBtn.addEventListener("click", () => {
+        if (htmlElement.getAttribute("data-theme") === "dark") {
+            htmlElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+            iconTheme.classList.replace("fa-sun", "fa-moon");
+        } else {
+            htmlElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            iconTheme.classList.replace("fa-moon", "fa-sun");
+        }
+    });
+
+    // --- 2. HAMBURGER MENU & DROPDOWN (MOBILE) ---
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    const dropdowns = document.querySelectorAll(".dropdown");
+    const navRight = document.querySelector(".nav-right");
+
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        navRight.classList.toggle("mobile-active");
+
+        const isIconMenu = hamburger.querySelector("i").classList.contains("fa-bars");
+        if(isIconMenu){
+            hamburger.querySelector("i").classList.replace("fa-bars", "fa-times");
+        } else {
+            hamburger.querySelector("i").classList.replace("fa-times", "fa-bars");
+        }
+    });
+
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener("click", function(e) {
+            if(window.innerWidth <= 992) {
+                if(e.target.classList.contains("fa-chevron-down") || e.target.parentElement.classList.contains("dropdown")){
+                    e.preventDefault();
+                    this.classList.toggle("open");
+                }
+            }
+        });
+    });
+
+    // --- 3. NAVBAR SCROLL EFFECT ---
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            navbar.style.padding = "0.5rem 3%";
+            navbar.style.boxShadow = "var(--shadow-md)";
+        } else {
+            navbar.style.padding = "1rem 3%";
+            navbar.style.boxShadow = "var(--shadow-sm)";
+        }
+    });
+
+    // --- 4. SCROLL ANIMATION (INTERSECTION OBSERVER) ---
+    const faders = document.querySelectorAll('.fade-up');
+    const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // --- 5. LUARAN DASHBOARD: FILTER & MODAL FULL DETAIL ---
+    const filterBtns = document.querySelectorAll('.btn-filter');
+    const luaranCards = document.querySelectorAll('.luaran-card');
+    
+    // Filter
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filterValue = btn.getAttribute('data-filter');
+            
+            luaranCards.forEach(card => {
+                if(filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Modal
+    const luaranModal = document.getElementById('luaran-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalCloseMob = document.getElementById('modal-close-mob');
+
+    luaranCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Get Data from attributes
+            const title = card.getAttribute('data-title');
+            const indDesc = card.getAttribute('data-ind-desc');
+            const target = card.getAttribute('data-target');
+            const realisasi = card.getAttribute('data-realisasi');
+            const capaian = card.getAttribute('data-capaian');
+            const capaianBar = card.getAttribute('data-capaian-bar');
+            const status = card.getAttribute('data-status');
+            const luaranDesc = card.getAttribute('data-luaran-desc');
+            const luaranRaw = card.getAttribute('data-luaran-list');
+
+            // Inject to modal
+            document.getElementById('m-title').textContent = title;
+            document.getElementById('m-ind-desc').textContent = indDesc;
+            document.getElementById('m-target').textContent = target;
+            document.getElementById('m-realisasi').textContent = realisasi;
+            
+            // Bar & Status
+            document.getElementById('m-capaian').textContent = capaian;
+            setTimeout(() => { document.getElementById('m-capaian-bar').style.width = capaianBar + '%'; }, 100);
+            document.getElementById('m-status').textContent = status;
+            
+            document.getElementById('m-luaran-desc').textContent = luaranDesc;
+
+            // List Luaran
+            const luaranListElem = document.getElementById('m-luaran-list');
+            luaranListElem.innerHTML = ''; 
+            
+            if(luaranRaw && luaranRaw.trim() !== "") {
+                const luaranItems = luaranRaw.split('|');
+                luaranItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    luaranListElem.appendChild(li);
+                });
+            } else {
+                luaranListElem.innerHTML = '<li>-</li>';
+            }
+
+            // Show
+            luaranModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        });
+    });
+
+    const closeModal = () => {
+        luaranModal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Restore background scroll
+        document.getElementById('m-capaian-bar').style.width = '0%'; // Reset bar
+    };
+
+    modalClose.addEventListener('click', closeModal);
+    modalCloseMob.addEventListener('click', closeModal);
+    
+    luaranModal.addEventListener('click', (e) => {
+        if(e.target === luaranModal) closeModal();
+    });
+
+    // =========================================
+    //  INTERACTIVE OWL MASCOT SYSTEM
+    // =========================================
+    const OWL_IMAGES = [
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787852921/Desain_tanpa_judul-removebg-preview_rg07lx.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880579/Gemini_Generated_Image_2id6wx2id6wx2id6-removebg-preview_olwtbr.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880580/Gemini_Generated_Image_cc0pxrcc0pxrcc0p-removebg-preview_ttafa4.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880581/Gemini_Generated_Image_iihwgkiihwgkiihw-removebg-preview_idqap9.png',
+        'https://res.cloudinary.com/drxc5e7gf/image/upload/v1787880580/Gemini_Generated_Image_kginynkginynkgin-removebg-preview_iunykg.png'
+    ];
+    
+    const OWL_EFFECTS = [ ' ✨ ', ' ❓ ', ' ❗ ', ' ☁️ ', ' 💨 ', '' ];
+    let currentOwlIndex = 0;
+    let owlSideLog = -1;
+    
+    const sysContainer = document.getElementById('owl-system');
+    const wrap = document.getElementById('owl-wrapper');
+    const img = document.getElementById('owl-img');
+    const fx = document.getElementById('owl-fx');
+    
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rand = (min, max) => Math.random() * (max - min) + min;
+    const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    function runOwlCycle() {
+        if (isReducedMotion || !sysContainer) return;
+        
+        img.src = OWL_IMAGES[currentOwlIndex];
+        currentOwlIndex = (currentOwlIndex + 1) % OWL_IMAGES.length;
+        
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const owlSize = vw < 768 ? 90 : 120;
+        
+        img.style.width = owlSize + 'px';
+        img.style.height = owlSize + 'px';
+        
+        let side;
+        do { side = randInt(0, 3); } while (side === owlSideLog);
+        owlSideLog = side;
+        
+        let startX, startY, endX, endY, rot;
+        let scaleX = 1;
+        const marginPadding = rand(20, 150);
+        const edgeMargin = 15;
+        
+        if (side === 0) {
+            startX = rand(marginPadding, vw - owlSize - marginPadding); startY = -owlSize - 50; endX = startX; endY = edgeMargin; rot = 180 + rand(-15, 15);
+        } else if (side === 1) {
+            startX = vw + 50; startY = rand(marginPadding, vh - owlSize - marginPadding); endX = vw - owlSize - edgeMargin; endY = startY; rot = -90 + rand(-15, 15); if (Math.random() > 0.5) scaleX = -1; 
+        } else if (side === 2) {
+            startX = rand(marginPadding, vw - owlSize - marginPadding); startY = vh + 50; endX = startX; endY = vh - owlSize - edgeMargin; rot = rand(-15, 15);
+        } else if (side === 3) {
+            startX = -owlSize - 50; startY = rand(marginPadding, vh - owlSize - marginPadding); endX = edgeMargin; endY = startY; rot = 90 + rand(-15, 15); if (Math.random() > 0.5) scaleX = -1; 
+        }
+        
+        const animDuration = randInt(300, 600);
+        const holdDuration = randInt(1000, 3000);
+        const delayBeforeNext = randInt(2000, 5000);
+        
+        wrap.style.transition = 'none'; wrap.style.transform = `translate(${startX}px, ${startY}px)`; wrap.style.opacity = '0'; wrap.classList.remove('owl-sway');
+        img.style.transform = `scaleX(${scaleX}) rotate(${rot}deg)`; fx.className = ''; fx.innerHTML = '';
+        
+        void wrap.offsetWidth;
+        wrap.style.transition = `all ${animDuration}ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`; wrap.style.transform = `translate(${endX}px, ${endY}px)`; wrap.style.opacity = '1';
+        
+        const chosenFx = OWL_EFFECTS[randInt(0, OWL_EFFECTS.length - 1)];
+        if (chosenFx !== '') { setTimeout(() => { fx.innerHTML = chosenFx; fx.style.top = (side === 2) ? '10%' : '80%'; fx.className = 'owl-fx-pop'; }, animDuration / 2); }
+        setTimeout(() => { wrap.classList.add('owl-sway'); }, animDuration);
+        setTimeout(() => {
+            wrap.classList.remove('owl-sway'); wrap.style.transition = `all ${animDuration}ms ease-in`; wrap.style.transform = `translate(${startX}px, ${startY}px)`;
+            img.style.transform = `scaleX(${scaleX}) scaleY(0.5) rotate(${rot}deg)`; wrap.style.opacity = '0';
+            setTimeout(runOwlCycle, animDuration + delayBeforeNext);
+        }, animDuration + holdDuration);
+    }
+    setTimeout(runOwlCycle, 2000);
+});
