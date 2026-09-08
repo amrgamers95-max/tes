@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="./style.css">
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -24,80 +13,87 @@
 </head>
 <body>
 
+    <!-- WELCOME MODAL / PENGUMUMAN -->
+    <div id="welcome-modal" class="modal-overlay">
+        <div class="modal-content simple-glow welcome-box">
+            <h3><i class="fas fa-desktop" style="color: var(--primary); margin-bottom: 10px; font-size: 2rem;"></i><br>Selamat Datang!</h3>
+            <p>Untuk pengalaman penjelajahan dan tampilan yang lebih maksimal, kami sangat menyarankan Anda untuk membuka website ini menggunakan <strong>PC atau Laptop</strong>.</p>
+            <button id="welcome-close" class="btn btn-primary btn-block mt-3">Mengerti, Lanjutkan</button>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="nav-left-group">
-                <div class="nav-left">
-                    <a href="#" class="logo-wrapper">
-                        <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788684921/ok_1080_x_1350_piksel_t2hpxu.png" alt="Logo MENITI">
-                        <span class="logo-text">MENITI</span>
-                    </a>
-                </div>
+                <a href="#" class="logo-wrapper">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788684921/ok_1080_x_1350_piksel_t2hpxu.png" alt="Logo MENITI">
+                    <span class="logo-text">MENITI</span>
+                </a>
+            </div>
 
-                <div class="nav-center" id="nav-menu">
-                    <ul class="nav-links">
-                        <li class="dropdown menu-profil-besar">
-                            <a href="#profil" class="active">Profil <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#tentang">Tentang</a></li>
-                                <li><a href="#tujuan">Tujuan</a></li>
-                                <li><a href="#filosofi">Filosofi Logo</a></li>
-                                <li><a href="#organisasi">Struktur Organisasi</a></li>
-                                <li><a href="#luaran">Indikator & Luaran</a></li>
-                                <li><a href="#desa-mitra">Desa Mitra</a></li>
-                                <li><a href="#sosmed">Sosmed</a></li>
-                                <li><a href="#dokumenter">Film Dokumenter</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Mentari Cendekia <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Siaga Tani <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Sinergi Tani <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Kembang Usaha <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Bijak Usaha <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Mitra <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Internal</a></li>
-                                <li><a href="#">External</a></li>
-                                <li><a href="#">Kontribusi Ormawa</a></li>
-                                <li><a href="#">Kontribusi Dosen</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Testimoni <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Kesan & Pesan</a></li>
-                                <li><a href="#">Publikasi</a></li> 
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="nav-center" id="nav-menu">
+                <ul class="nav-links">
+                    <li class="dropdown menu-profil-besar">
+                        <a href="#profil" class="active">Profil <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#tentang">Tentang</a></li>
+                            <li><a href="#tujuan">Tujuan</a></li>
+                            <li><a href="#filosofi">Filosofi Logo</a></li>
+                            <li><a href="#organisasi">Struktur Organisasi</a></li>
+                            <li><a href="#luaran">Indikator & Luaran</a></li>
+                            <li><a href="#desa-mitra">Desa Mitra</a></li>
+                            <li><a href="#sosmed">Sosmed</a></li>
+                            <li><a href="#dokumenter">Film Dokumenter</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Mentari Cendekia <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Siaga Tani <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Sinergi Tani <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Kembang Usaha <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Bijak Usaha <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Tentang</a></li><li><a href="#">Capaian</a></li><li><a href="#">Modul Pojok Literasi</a></li><li><a href="#">Kurikulum Pojok Literasi</a></li><li><a href="#">PIC</a></li><li><a href="#">Kader</a></li><li><a href="#">Pojok Baca</a></li><li><a href="#">Program Kerja & Kegiatan</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Mitra <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Internal</a></li>
+                            <li><a href="#">External</a></li>
+                            <li><a href="#">Kontribusi Ormawa</a></li>
+                            <li><a href="#">Kontribusi Dosen</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Testimoni <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Kesan & Pesan</a></li>
+                            <li><a href="#">Publikasi</a></li> 
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
             <div class="hamburger" id="hamburger">
@@ -105,10 +101,10 @@
             </div>
 
             <div class="nav-right">
-                <button class="icon-btn" id="theme-toggle" aria-label="Toggle Dark Mode">
+                <button class="btn btn-primary icon-box-btn" id="theme-toggle" aria-label="Toggle Dark Mode">
                     <i class="fas fa-moon"></i>
                 </button>
-                <a href="desa/index.html" class="btn btn-primary nowrap">Desa Bejaten</a>
+                <a href="#" class="btn btn-primary nowrap">Desa Bejaten</a>
                 <a href="#" class="btn btn-primary nowrap">Admin</a>
             </div>
         </div>
@@ -241,13 +237,13 @@
             <h2 class="section-title">Filosofi Logo</h2>
             <div class="logo-philosophy-vertical">
                 <div class="phil-main-top">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788684921/ok_1080_x_1350_piksel_t2hpxu.png" alt="Logo Utama MENITI" class="main-3d-logo">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788684921/ok_1080_x_1350_piksel_t2hpxu.png" alt="Logo Utama MENITI" class="main-3d-logo" loading="lazy" decoding="async">
                 </div>
                 <div class="phil-subs-row">
-                    <div class="phil-sub-item simple-glow" title="Daun Buku"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685105/PROFILE_DAN_FILOSOFI_6_l8iloa.png" alt="Daun Buku"></div>
-                    <div class="phil-sub-item simple-glow" title="Panah Koin Emas"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685103/PROFILE_DAN_FILOSOFI_4_o2ut0e.png" alt="Panah Koin Emas"></div>
-                    <div class="phil-sub-item simple-glow" title="Pita Pengikat"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685102/PROFILE_DAN_FILOSOFI_5_wa2gdj.png" alt="Pita Pengikat"></div>
-                    <div class="phil-sub-item simple-glow" title="Heksagon"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685099/PROFILE_DAN_FILOSOFI_7_l8872z.png" alt="Heksagon"></div>
+                    <div class="phil-sub-item simple-glow" title="Daun Buku"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685105/PROFILE_DAN_FILOSOFI_6_l8iloa.png" alt="Daun Buku" loading="lazy" decoding="async"></div>
+                    <div class="phil-sub-item simple-glow" title="Panah Koin Emas"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685103/PROFILE_DAN_FILOSOFI_4_o2ut0e.png" alt="Panah Koin Emas" loading="lazy" decoding="async"></div>
+                    <div class="phil-sub-item simple-glow" title="Pita Pengikat"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685102/PROFILE_DAN_FILOSOFI_5_wa2gdj.png" alt="Pita Pengikat" loading="lazy" decoding="async"></div>
+                    <div class="phil-sub-item simple-glow" title="Heksagon"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788685099/PROFILE_DAN_FILOSOFI_7_l8872z.png" alt="Heksagon" loading="lazy" decoding="async"></div>
                 </div>
             </div>
             <div class="philosophy-text">
@@ -265,27 +261,27 @@
             <h2 class="section-title text-center">Struktur Organisasi</h2>
             <div class="dosen-row mt-4">
                 <div class="org-card highlight-card simple-glow">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682343/FEEDS_DOSPEM_p1te6m.png" alt="Dosen Pendamping">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682343/FEEDS_DOSPEM_p1te6m.png" alt="Dosen Pendamping" loading="lazy" decoding="async">
                     <h4 class="truncate-name" title="Mohamad Egi Destiartono, S.E., M.S.E">Mohamad Egi D., S.E., M.S.E</h4>
                     <p class="nip">NIP: 199612282024061001</p><p class="role">Dosen Pendamping</p>
                 </div>
             </div>
             <div class="org-grid mt-4">
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682344/FEEDS_KETUA_n4bxj1.png" alt="Ketua"><h4 class="truncate-name" title="Grace Alice Tiantya Putri">Grace Alice T. P.</h4><p class="nip">NIM: 12010124130166</p><p class="role">Ketua</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682347/FEEDS_WAKIL_KETUA_fj3oyr.png" alt="Wakil Ketua"><h4 class="truncate-name" title="Mohammad Alwin Faruq">M. Alwin Faruq</h4><p class="nip">NIM: 12020224140157</p><p class="role">Wakil Ketua</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682347/FEEDS_SEKRE_nlhfa7.png" alt="Sekretaris"><h4 class="truncate-name" title="Maulida Ayu Nuruz Zahra">Maulida Ayu N. Z.</h4><p class="nip">NIM: 12020223120025</p><p class="role">Sekretaris</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788686557/Salinan_dari_Desain_Tanpa_Judul_fkbzx5.png" alt="Bendahara"><h4 class="truncate-name" title="Sadrina Qastari Karina Berutu">Sadrina Qastari K. B.</h4><p class="nip">NIM: 12030124130109</p><p class="role">Bendahara</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682343/FEEDS_MENTARI_CENDEKIA_j0wm4h.png" alt="PIC Mentari Cendekia"><h4 class="truncate-name" title="Karen Putri Olivia Pakpahan">Karen Putri O. P.</h4><p class="nip">NIM: 13040224130092</p><p class="role">PIC Mentari Cendekia</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682339/REVISI_FEEDS_RIAN_exoerk.png" alt="PIC Nawasena Tani"><h4 class="truncate-name" title="Muflih Nabiha Adriano">Muflih Nabiha A.</h4><p class="nip">NIM: 23020224130087</p><p class="role">PIC Nawasena Tani</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682340/FEEDS_3_PJ_NAWASENA_TANI_v6r0hm.png" alt="PIC Nawasena Tani"><h4 class="truncate-name" title="Muhammad Galen Yodhany">Muhammad Galen Y.</h4><p class="nip">NIM: 23020323130088</p><p class="role">PIC Nawasena Tani</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682345/REVISI_FEEDS_DIANA_tjvglq.png" alt="PIC Titian Wirausaha"><h4 class="truncate-name" title="Diana Miftadliroh">Diana Miftadliroh</h4><p class="nip">NIM: 12020224130037</p><p class="role">PIC Titian Wirausaha</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682342/FEEDS_3_TITIAN_WIRAUSAHA_x4gpjb.png" alt="PIC Titian Wirausaha"><h4 class="truncate-name" title="Sellysia Tanujaya">Sellysia Tanujaya</h4><p class="nip">NIM: 12020124130087</p><p class="role">PIC Titian Wirausaha</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682346/FEEDS_KEMITRAAN_EKTERNAL_vxtymp.png" alt="Kemitraan External"><h4 class="truncate-name" title="Imtiyaz Zuhdi Khairi">Imtiyaz Zuhdi K.</h4><p class="nip">NIM: 12010123130165</p><p class="role">Kemitraan External</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682340/FEEDS_3_LOGISTIK_hncytk.png" alt="Logistik"><h4 class="truncate-name" title="Filipus Valentino Wisnutama">Filipus Valentino W.</h4><p class="nip">NIM: 12020124120039</p><p class="role">Logistik</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682346/REVISI_FEEDS_NIS_zm54wr.png" alt="Logistik"><h4 class="truncate-name" title="Syaidatul Nisa">Syaidatul Nisa</h4><p class="nip">NIM: 40040124630052</p><p class="role">Logistik</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682342/FEEDS_2_CREATIVE_MEDIA_btwckp.png" alt="Creative Media"><h4 class="truncate-name" title="Rifta Selfiana">Rifta Selfiana</h4><p class="nip">NIM: 12020223120024</p><p class="role">Creative Media</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682340/FEEDS_3_CREATIVE_MEDIA_gpmwor.png" alt="Creative Media"><h4 class="truncate-name" title="Farah Nabila">Farah Nabila</h4><p class="nip">NIM: 12020224140110</p><p class="role">Creative Media</p></div>
-                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682342/FEEDS_4_CREATIVE_MEDIA_m9zxj4.png" alt="Creative Media"><h4 class="truncate-name" title="Amrul Hidayat">Amrul Hidayat</h4><p class="nip">NIM: 12010125120020</p><p class="role">Creative Media</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682344/FEEDS_KETUA_n4bxj1.png" alt="Ketua" loading="lazy" decoding="async"><h4 class="truncate-name" title="Grace Alice Tiantya Putri">Grace Alice T. P.</h4><p class="nip">NIM: 12010124130166</p><p class="role">Ketua</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682347/FEEDS_WAKIL_KETUA_fj3oyr.png" alt="Wakil Ketua" loading="lazy" decoding="async"><h4 class="truncate-name" title="Mohammad Alwin Faruq">M. Alwin Faruq</h4><p class="nip">NIM: 12020224140157</p><p class="role">Wakil Ketua</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682347/FEEDS_SEKRE_nlhfa7.png" alt="Sekretaris" loading="lazy" decoding="async"><h4 class="truncate-name" title="Maulida Ayu Nuruz Zahra">Maulida Ayu N. Z.</h4><p class="nip">NIM: 12020223120025</p><p class="role">Sekretaris</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788686557/Salinan_dari_Desain_Tanpa_Judul_fkbzx5.png" alt="Bendahara" loading="lazy" decoding="async"><h4 class="truncate-name" title="Sadrina Qastari Karina Berutu">Sadrina Qastari K. B.</h4><p class="nip">NIM: 12030124130109</p><p class="role">Bendahara</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682343/FEEDS_MENTARI_CENDEKIA_j0wm4h.png" alt="PIC Mentari Cendekia" loading="lazy" decoding="async"><h4 class="truncate-name" title="Karen Putri Olivia Pakpahan">Karen Putri O. P.</h4><p class="nip">NIM: 13040224130092</p><p class="role">PIC Mentari Cendekia</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682339/REVISI_FEEDS_RIAN_exoerk.png" alt="PIC Nawasena Tani" loading="lazy" decoding="async"><h4 class="truncate-name" title="Muflih Nabiha Adriano">Muflih Nabiha A.</h4><p class="nip">NIM: 23020224130087</p><p class="role">PIC Nawasena Tani</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682340/FEEDS_3_PJ_NAWASENA_TANI_v6r0hm.png" alt="PIC Nawasena Tani" loading="lazy" decoding="async"><h4 class="truncate-name" title="Muhammad Galen Yodhany">Muhammad Galen Y.</h4><p class="nip">NIM: 23020323130088</p><p class="role">PIC Nawasena Tani</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682345/REVISI_FEEDS_DIANA_tjvglq.png" alt="PIC Titian Wirausaha" loading="lazy" decoding="async"><h4 class="truncate-name" title="Diana Miftadliroh">Diana Miftadliroh</h4><p class="nip">NIM: 12020224130037</p><p class="role">PIC Titian Wirausaha</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682342/FEEDS_3_TITIAN_WIRAUSAHA_x4gpjb.png" alt="PIC Titian Wirausaha" loading="lazy" decoding="async"><h4 class="truncate-name" title="Sellysia Tanujaya">Sellysia Tanujaya</h4><p class="nip">NIM: 12020124130087</p><p class="role">PIC Titian Wirausaha</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682346/FEEDS_KEMITRAAN_EKTERNAL_vxtymp.png" alt="Kemitraan External" loading="lazy" decoding="async"><h4 class="truncate-name" title="Imtiyaz Zuhdi Khairi">Imtiyaz Zuhdi K.</h4><p class="nip">NIM: 12010123130165</p><p class="role">Kemitraan External</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682340/FEEDS_3_LOGISTIK_hncytk.png" alt="Logistik" loading="lazy" decoding="async"><h4 class="truncate-name" title="Filipus Valentino Wisnutama">Filipus Valentino W.</h4><p class="nip">NIM: 12020124120039</p><p class="role">Logistik</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682346/REVISI_FEEDS_NIS_zm54wr.png" alt="Logistik" loading="lazy" decoding="async"><h4 class="truncate-name" title="Syaidatul Nisa">Syaidatul Nisa</h4><p class="nip">NIM: 40040124630052</p><p class="role">Logistik</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682342/FEEDS_2_CREATIVE_MEDIA_btwckp.png" alt="Creative Media" loading="lazy" decoding="async"><h4 class="truncate-name" title="Rifta Selfiana">Rifta Selfiana</h4><p class="nip">NIM: 12020223120024</p><p class="role">Creative Media</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682340/FEEDS_3_CREATIVE_MEDIA_gpmwor.png" alt="Creative Media" loading="lazy" decoding="async"><h4 class="truncate-name" title="Farah Nabila">Farah Nabila</h4><p class="nip">NIM: 12020224140110</p><p class="role">Creative Media</p></div>
+                <div class="org-card simple-glow"><img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788682342/FEEDS_4_CREATIVE_MEDIA_m9zxj4.png" alt="Creative Media" loading="lazy" decoding="async"><h4 class="truncate-name" title="Amrul Hidayat">Amrul Hidayat</h4><p class="nip">NIM: 12010125120020</p><p class="role">Creative Media</p></div>
             </div>
         </div>
     </section>
@@ -636,7 +632,7 @@
 
             </div> <!-- End Grid -->
 
-            <!-- Persentase Pertemuan Pojok Literasi (Menggantikan Tabel) -->
+            <!-- Persentase Pertemuan Pojok Literasi -->
             <div class="card simple-glow mt-5 p-5 fade-up" style="max-width: 900px; margin: 3rem auto 0;">
                 <h3 class="text-center mb-3" style="color: var(--primary-dark); font-size: 1.8rem;">Persentase Pertemuan Pojok Literasi</h3>
                 <p class="text-center mb-4 text-muted" style="font-size: 1.1rem;">Dari 60 Pertemuan, 55 sudah terlaksana</p>
@@ -708,7 +704,7 @@
             
             <div class="map-wrapper mt-4">
                 <div class="simple-glow map-container">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1787804788/I_20260327_080551_0000.jpg_kwu5zx.jpg" alt="Peta Desa Bejaten" class="map-img">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1787804788/I_20260327_080551_0000.jpg_kwu5zx.jpg" alt="Peta Desa Bejaten" class="map-img" loading="lazy" decoding="async">
                 </div>
                 <a href="https://maps.app.goo.gl/yySwWUBdNBbQXZJCA" target="_blank" class="btn btn-primary mt-4"><i class="fas fa-map-marker-alt"></i> Buka di Google Maps</a>
             </div>
@@ -745,15 +741,15 @@
             <h2 class="section-title text-center">Media Sosial Kami</h2>
             <div class="grid-3 mt-4">
                 <div class="sosmed-card simple-glow">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788725423/Oren_dan_Ungu_Ilustrasi_Bijak_dalam_Menggunakan_Gadget_Poster_ugwmun.png" alt="Instagram">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788725423/Oren_dan_Ungu_Ilustrasi_Bijak_dalam_Menggunakan_Gadget_Poster_ugwmun.png" alt="Instagram" loading="lazy" decoding="async">
                     <a href="https://www.instagram.com/ppkormawa_bemfebundip?stkn=MWZwMnY2MHhkZ3FiYg==" target="_blank" class="btn btn-primary btn-block mt-2"><i class="fab fa-instagram"></i> Kunjungi Instagram</a>
                 </div>
                 <div class="sosmed-card simple-glow">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788725423/Oren_dan_Ungu_Ilustrasi_Bijak_dalam_Menggunakan_Gadget_Poster_2_mty9wd.png" alt="TikTok">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788725423/Oren_dan_Ungu_Ilustrasi_Bijak_dalam_Menggunakan_Gadget_Poster_2_mty9wd.png" alt="TikTok" loading="lazy" decoding="async">
                     <a href="https://www.tiktok.com/@ppkormawa.bemfebundip26?_r=1&_t=ZS-99W0WkNLyTK" target="_blank" class="btn btn-primary btn-block mt-2"><i class="fab fa-tiktok"></i> Kunjungi TikTok</a>
                 </div>
                 <div class="sosmed-card simple-glow">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788725423/Oren_dan_Ungu_Ilustrasi_Bijak_dalam_Menggunakan_Gadget_Poster_1_iodvqu.png" alt="YouTube">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788725423/Oren_dan_Ungu_Ilustrasi_Bijak_dalam_Menggunakan_Gadget_Poster_1_iodvqu.png" alt="YouTube" loading="lazy" decoding="async">
                     <a href="https://youtube.com/@ppkormawa.bemfebundip26?si=cNvtM2vasOMGjZXs" target="_blank" class="btn btn-primary btn-block mt-2"><i class="fab fa-youtube"></i> Kunjungi YouTube</a>
                 </div>
             </div>
@@ -768,13 +764,13 @@
                 <div class="video-card simple-glow">
                     <h4 class="mb-2 text-center">Recap Juli</h4>
                     <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/a9X7qqcISu0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/a9X7qqcISu0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="video-card simple-glow">
                     <h4 class="mb-2 text-center">Recap Agustus</h4>
                     <div class="iframe-container">
-                        <iframe src="https://www.youtube.com/embed/ydwajHkJED0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/ydwajHkJED0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -786,7 +782,7 @@
         <div class="footer-container">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788684921/ok_1080_x_1350_piksel_t2hpxu.png" alt="Logo MENITI">
+                    <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1788684921/ok_1080_x_1350_piksel_t2hpxu.png" alt="Logo MENITI" loading="lazy" decoding="async">
                     <span>MENITI</span>
                 </div>
                 <p class="mt-2">
@@ -803,7 +799,7 @@
             <div class="footer-col text-center">
                 <h3>Lokasi Kami</h3>
                 <a href="https://maps.app.goo.gl/xhvL3da1YqKLPt1g7" target="_blank" class="btn btn-footer-maps btn-block mb-3"><i class="fas fa-map-marker-alt"></i> Buka di Google Maps</a>
-                <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1787804788/I_20260327_080551_0000.jpg_kwu5zx.jpg" alt="Peta Lokasi" class="footer-map">
+                <img src="https://res.cloudinary.com/drxc5e7gf/image/upload/v1787804788/I_20260327_080551_0000.jpg_kwu5zx.jpg" alt="Peta Lokasi" class="footer-map" loading="lazy" decoding="async">
             </div>
 
             <div class="footer-col align-right-social">
@@ -822,18 +818,14 @@
 
     <!-- INTERACTIVE OWL MASCOT -->
     <div id="owl-system" aria-label="Interactive Owl Mascot" tabindex="-1">
-        <div id="owl-wrapper">
-            <img id="owl-img" src="" alt="Owl Mascot">
+        <!-- Burung Hantu dibungkus Tag A agar bisa diklik -->
+        <a href="#" target="_blank" id="owl-wrapper" aria-label="Klik untuk melihat informasi terkait">
+            <img id="owl-img" src="" alt="Owl Mascot" loading="lazy">
             <div id="owl-fx"></div>
-        </div>
+        </a>
     </div>
 
     <!-- JS -->
     <script src="script.js"></script>
 </body>
-</html>
-    <script  src="./script.js"></script>
-
-  </body>
-  
 </html>
